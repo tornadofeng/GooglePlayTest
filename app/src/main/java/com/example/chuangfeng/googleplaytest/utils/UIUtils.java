@@ -1,6 +1,7 @@
 package com.example.chuangfeng.googleplaytest.utils;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.view.View;
@@ -43,6 +44,11 @@ public class UIUtils {
     //加载颜色
     public static int getColor(int id) {
         return getContext().getResources().getColor(id);
+    }
+
+    //加载颜色状态选择器
+    public static ColorStateList getColorStateList(int id) {
+        return getContext().getResources().getColorStateList(id);
     }
 
     //加载尺寸
