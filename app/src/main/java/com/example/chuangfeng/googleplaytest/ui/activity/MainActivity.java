@@ -8,11 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.chuangfeng.googleplaytest.R;
+import com.example.chuangfeng.googleplaytest.ui.fragment.BaseFragment;
 import com.example.chuangfeng.googleplaytest.ui.fragment.FragmentFactory;
 import com.example.chuangfeng.googleplaytest.ui.widget.PagerTab;
 import com.example.chuangfeng.googleplaytest.utils.UIUtils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private PagerTab mPagerTab;
     private ViewPager mViewPager;
@@ -28,6 +29,26 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         //将viewpager和页签自定义控件关联在一起（注意：此方法必须在viewpager设置完数据之后在调用）
         mPagerTab.setViewPager(mViewPager);
+
+        //如果viewpage和PageTab绑定在一起，那么监听事件就要设置给PagerTab
+        mPagerTab.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                //当页面被选中，加载当前页面的数据
+                BaseFragment fragment = (BaseFragment) FragmentFactory.createFragment(position);
+                fragment.loadData();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     class MyAdapter extends FragmentPagerAdapter {

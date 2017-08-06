@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--让图片绕着中心点去旋转，从0度旋转到360度，中心点为图片的50%处-->
+    <item>
+        <rotate android:drawable="@drawable/spinner_big_inner"
+            android:fromDegrees="0"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="720"
+            />
+    </item>
+
+    <item>
+        <rotate android:drawable="@drawable/spinner_big_outer"
+            android:fromDegrees="360"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="0" />
+    </item>
+
+</layer-list>
