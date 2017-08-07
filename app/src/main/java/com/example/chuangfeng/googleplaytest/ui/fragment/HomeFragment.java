@@ -1,5 +1,6 @@
 package com.example.chuangfeng.googleplaytest.ui.fragment;
 
+import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -82,6 +83,16 @@ public class HomeFragment extends BaseFragment {
         @Override
         public BaseHolder<String> getHolder(int position) {
             return new HomeHolder();
+        }
+
+        @Override
+        public ArrayList<String> onLoadMore() {
+            ArrayList<String> moreData = new ArrayList<String>();
+            for (int i = 0; i < 20; i++) {
+                moreData.add("更多测试数据" + i);
+            }
+            SystemClock.sleep(2000);
+            return moreData;
         }
     }
 
